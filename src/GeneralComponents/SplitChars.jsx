@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react';
 import './MultiuseComponentsCss.css';
-// import gsap from "gsap";
+import { gsap } from 'gsap';
 
 function SplitChars(props) {
    const msg = props.children.split('');
 
+   console.log(gsap)
    if (props.animeType === "upwards") {
       useEffect(() => {
-         gsap.context(() => {
-            gsap.fromTo('.split_char',
-               {
-                  y: 150,
-               },
-               {
-                  y: 0,
-                  stagger: 0.1
-               }
-            );
-         });
+         // gsap.context(() => {
+         //    gsap.fromTo('.split_char',
+         //       {
+         //          y: 150,
+         //       },
+         //       {
+         //          y: 0,
+         //          stagger: 0.1
+         //       }
+         //    );
+         // });
       }, []);
    }
 
