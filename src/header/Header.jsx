@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Header.css';
 import { isMobile } from '../generalFunctions';
+import '../gsap/gsap';
 
 function Header(props) {
       const navMenu = props.navMenu;
