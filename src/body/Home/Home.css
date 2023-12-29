@@ -1,0 +1,26 @@
+
+.home {
+   width: 100%;
+   min-height: 1000px;
+   background-color: #242424;
+   box-shadow: 0 0 8px rgb(255, 184, 145);
+   overflow: hidden;
+}
+
+.home h1 {
+   font-weight: normal;
+}
+
+.special_nth_char {
+   color: darkslategrey;
+   animation: OnOffLightLetter 2s ease-in-out infinite alternate; 
+}
+
+@keyframes OnOffLightLetter {
+   from {
+      opacity: 0.2;
+   }
+   to {
+      opacity: 1;
+   }
+}

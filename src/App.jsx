@@ -1,33 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+import Header from './header/Header';
+import SiteView from './body/SiteView';
+import { func } from 'prop-types';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // FOR RESIZE
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+  useEffect(() => {
+    const resize = () => {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      })
+    }
+
+    window.addEventListener('resize', resize)
+  }, [])
+  // NAVIGATION 
+  const [activated, setActivated] = useState(false);
+  function handleAnim(flag) {
+    setActivated(flag);
+  }
+
+  const navMenu = ['Home', 'About Me', 'Portfolio', 'Contact'];
+  const [navigate, setNavigate] = useState(navMenu[0]);
+  function changeNav(page) {
+    // ADD CURRENT VIEW TO PREVIOUS SO AS TO CREATE AN EFFECT
+    if (page !== navigate) {
+      const mainContent = document.getElementById('main_content');
+      const prev_view = document.createElement('div');
+      prev_view.className = "prev_view";
+      mainContent.prepend(prev_view);
+      mainContent.querySelector('.prev_view').innerHTML = document.querySelector('#main_content > .current_view').innerHTML;
+      setTimeout(function () {
+        mainContent.querySelector('.prev_view').remove();
+        handleAnim(false);
+      }, 700);
+
+      setNavigate(page);
+    }
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header activated={{ activated, handleAnim }} navMenu={navMenu} nav={{ navigate, changeNav }} />
+      <SiteView currentNav={navigate} />
     </>
   )
 }
