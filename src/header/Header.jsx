@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react';
 import './Header.css';
 import { isMobile } from '../generalFunctions';
+import { gsap } from 'gsap';
 
 function Header(props) {
       const navMenu = props.navMenu;
       useEffect(() => {
             props.nav.changeNav;
 
-            // gsap.fromTo('.header_nav_btn_wrap',
-            //       {
-            //             x: -200
-            //       },
-            //       {
-            //             x: 0,
-            //             stagger: 0.2
-            //       }
-            // );
+            gsap.fromTo('.header_nav_btn_wrap',
+                  {
+                        x: -200
+                  },
+                  {
+                        x: 0,
+                        stagger: 0.2
+                  }
+            );
       }, []);
 
       function handleClick(e, item) {
