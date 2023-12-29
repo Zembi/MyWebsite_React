@@ -7,17 +7,17 @@ function SplitChars(props) {
 
    if (props.animeType === "upwards") {
       useEffect(() => {
-         // gsap.context(() => {
-         //    gsap.fromTo('.split_char',
-         //       {
-         //          y: 150,
-         //       },
-         //       {
-         //          y: 0,
-         //          stagger: 0.1
-         //       }
-         //    );
-         // });
+         gsap.context(() => {
+            gsap.fromTo('.split_char',
+               {
+                  y: 150,
+               },
+               {
+                  y: 0,
+                  stagger: 0.1
+               }
+            );
+         });
       }, []);
    }
 
