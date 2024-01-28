@@ -10,7 +10,7 @@ function Header(props) {
 
             gsap.fromTo('.header_nav_btn_wrap',
                   {
-                        x: -200
+                        x: 200
                   },
                   {
                         x: 0,

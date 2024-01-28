@@ -5,7 +5,6 @@ import { gsap } from 'gsap';
 function SplitChars(props) {
    const msg = props.children.split('');
 
-   console.log(gsap)
    if (props.animeType === "upwards") {
       useEffect(() => {
          gsap.context(() => {
